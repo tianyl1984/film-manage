@@ -10,6 +10,8 @@ public class RequestResult {
 
 	private byte[] resultBytes;
 
+	private int responseCode;
+
 	public RequestResult() {
 
 	}
@@ -38,4 +40,13 @@ public class RequestResult {
 	public void setResultBytes(byte[] resultBytes) {
 		this.resultBytes = resultBytes;
 	}
+
+	public int getResponseCode() {
+		return responseCode;
+	}
+
+	public void setResponseCode(int responseCode) {
+		this.responseCode = responseCode;
+	}
+
 }

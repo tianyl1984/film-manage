@@ -18,6 +18,9 @@ public class JdbcUtil {
 	}
 
 	public static List<Integer> saveList(String sql, List<Object[]> valueList) {
+		if (valueList == null || valueList.size() == 0) {
+			return new ArrayList<Integer>();
+		}
 		Connection conn = null;
 		try {
 			conn = getConnection();
@@ -90,6 +93,15 @@ public class JdbcUtil {
 		}
 	}
 
+	public static List<String> queryStr(String sql, Object... args) {
+		return query(sql, new RowMapper<String>() {
+			@Override
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return rs.getString(1);
+			}
+		}, args);
+	}
+
 	private static void close(Connection conn) {
 		if (conn != null) {
 			try {
@@ -114,7 +126,7 @@ public class JdbcUtil {
 
 	private static Connection getConnection() throws ClassNotFoundException, SQLException {
 		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://127.0.0.1:3306/new_film?useUnicode=true&characterEncoding=utf-8";
+		String url = "jdbc:mysql://127.0.0.1:3306/film?useUnicode=true&characterEncoding=utf-8";
 		Class.forName(driver);
 		Connection conn = DriverManager.getConnection(url, "root", "tyl123");
 		return conn;

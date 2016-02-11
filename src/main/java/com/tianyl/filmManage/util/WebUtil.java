@@ -9,8 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import javax.net.ssl.HttpsURLConnection;
-
 /**
  * Http与Servlet工具类.
  * 
@@ -36,8 +34,7 @@ public class WebUtil {
 			cookieMap = new HashMap<String, String>();
 		}
 		try {
-			HttpsURLConnection conn = (HttpsURLConnection) (new URL(
-					checkUrl(url)).openConnection());
+			HttpURLConnection conn = (HttpURLConnection) (new URL(checkUrl(url)).openConnection());
 			if (!paramMap.isEmpty()) {
 				conn.setDoInput(true);
 			}
@@ -60,6 +57,7 @@ public class WebUtil {
 			// 连接
 			conn.connect();
 			writeParameters(conn, paramMap);
+			rr.setResponseCode(conn.getResponseCode());
 			if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
 				rr.setOk(false);
 				rr.setResultBytes(IOUtils.toByteArray(conn.getErrorStream()));
