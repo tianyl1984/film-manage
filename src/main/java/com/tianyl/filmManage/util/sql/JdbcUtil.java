@@ -126,7 +126,7 @@ public class JdbcUtil {
 
 	private static Connection getConnection() throws ClassNotFoundException, SQLException {
 		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://127.0.0.1:3306/film?useUnicode=true&characterEncoding=utf-8";
+		String url = "jdbc:mysql://192.168.0.104:3306/film?useUnicode=true&characterEncoding=utf-8";
 		Class.forName(driver);
 		Connection conn = DriverManager.getConnection(url, "root", "tyl123");
 		return conn;
