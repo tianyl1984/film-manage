@@ -1,6 +1,7 @@
 package com.tianyl.filmManage.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.tianyl.filmManage.model.NewFilm;
@@ -21,6 +22,11 @@ public class NewFilmDAO {
 			valueList.add(vals);
 		}
 		JdbcUtil.saveList(sql, valueList);
+	}
+
+	public static List<NewFilm> findByDate(Date sdate, Date edate) {
+		String sql = "select * from new_film where updateTime >= ? and updateTime <= ? order by updateTime";
+		return JdbcUtil.query(sql, NewFilmRowMapper.getInstance(), sdate, edate);
 	}
 
 }

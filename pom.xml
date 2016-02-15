@@ -17,6 +17,11 @@
 			<version>5.1.38</version>
 		</dependency>
 		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.7</version>
+		</dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
@@ -25,7 +30,7 @@
 	</dependencies>
 	
 	<build>
-		<finalName>webapp</finalName>
+		<finalName>fm</finalName>
 		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
     	<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
     	<outputDirectory>${basedir}/webapp/WEB-INF/classes</outputDirectory>
