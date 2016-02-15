@@ -29,14 +29,8 @@ public class BttiantangCrawler implements Crawler {
 				Element a = p.getElementsByTag("a").first();
 				String url = getUrl() + a.attr("href");
 				Element span = p.getElementsByTag("span").first();
-				String dateStr = span.ownText();
-				Element font = p.getElementsByTag("font").first();
-				String name = "";
-				if (font == null) {
-					name = p.getElementsByTag("b").first().ownText();
-				} else {
-					name = font.ownText();
-				}
+				String dateStr = span.text();
+				String name = a.text();
 				NewFilm nf = new NewFilm();
 				nf.setName(name);
 				nf.setWebSiteId(1);
