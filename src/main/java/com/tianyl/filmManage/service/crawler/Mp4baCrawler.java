@@ -26,6 +26,9 @@ public class Mp4baCrawler implements Crawler {
 		Elements trs = tbody.getElementsByTag("tr");
 		for (Element tr : trs) {
 			Elements tds = tr.children();
+			if (tds.size() != 8) {
+				continue;
+			}
 			String dateStr = tds.first().ownText();
 			Element a = tds.get(2).getElementsByTag("a").first();
 			String url = "http://www.mp4ba.com/" + a.attr("href");
