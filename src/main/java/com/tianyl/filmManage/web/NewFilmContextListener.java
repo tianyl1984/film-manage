@@ -21,7 +21,11 @@ public class NewFilmContextListener implements ServletContextListener {
 			@Override
 			public void run() {
 				LogManager.log("start crawl");
-				FilmCrawlerManager.crawl();
+				try {
+					FilmCrawlerManager.crawl();
+				} catch (Exception e) {
+					LogManager.log(e);
+				}
 				LogManager.log("end crawl");
 			}
 		}, 10 * 1000, 1000 * 60 * 60 * 3);
