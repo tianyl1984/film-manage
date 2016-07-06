@@ -12,6 +12,7 @@ import com.tianyl.filmManage.model.NewFilm;
 import com.tianyl.filmManage.service.crawler.BttiantangCrawler;
 import com.tianyl.filmManage.service.crawler.Crawler;
 import com.tianyl.filmManage.service.crawler.Mp4baCrawler;
+import com.tianyl.filmManage.service.crawler.RarBTCrawler;
 import com.tianyl.filmManage.util.LogManager;
 import com.tianyl.filmManage.util.RequestResult;
 import com.tianyl.filmManage.util.WebUtil;
@@ -22,6 +23,7 @@ public class FilmCrawlerManager {
 		List<Crawler> crawlers = new ArrayList<Crawler>();
 		crawlers.add(new BttiantangCrawler());
 		crawlers.add(new Mp4baCrawler());
+		crawlers.add(new RarBTCrawler());
 		List<String> urls = NewFilmDAO.findUrlsLast1000();
 		Set<String> urlSet = new HashSet<String>();
 		urlSet.addAll(urls);

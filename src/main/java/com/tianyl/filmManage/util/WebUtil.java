@@ -41,6 +41,8 @@ public class WebUtil {
 			conn.setDoOutput(true);
 			conn.setRequestMethod(isGet ? "GET" : "POST");
 			conn.setUseCaches(false);
+			conn.setConnectTimeout(30000);
+			conn.setReadTimeout(30000);
 			// 仅对当前请求自动重定向
 			conn.setInstanceFollowRedirects(true);
 			// header 设置编码

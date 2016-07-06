@@ -58,4 +58,8 @@ public class NewFilm {
 		this.updateTime = updateTime;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("id:%d,name:%s,url:%s,updateTime:%tF", id, name, url, updateTime);
+	}
 }
