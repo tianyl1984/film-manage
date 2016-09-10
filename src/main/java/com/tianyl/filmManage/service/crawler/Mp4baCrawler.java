@@ -23,6 +23,9 @@ public class Mp4baCrawler implements Crawler {
 		List<NewFilm> nfs = new ArrayList<NewFilm>();
 		Document doc = Jsoup.parse(html);
 		Element tbody = doc.getElementById("data_list");
+		if (tbody == null) {
+			return nfs;
+		}
 		Elements trs = tbody.getElementsByTag("tr");
 		for (Element tr : trs) {
 			Elements tds = tr.children();

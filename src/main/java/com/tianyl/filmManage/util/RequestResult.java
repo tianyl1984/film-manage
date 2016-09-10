@@ -1,6 +1,6 @@
 package com.tianyl.filmManage.util;
 
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 
 public class RequestResult {
 
@@ -25,11 +25,7 @@ public class RequestResult {
 	}
 
 	public String getResultStr() {
-		try {
-			resultStr = new String(resultBytes, "utf-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		resultStr = new String(resultBytes, Charset.forName("utf-8"));
 		return resultStr;
 	}
 

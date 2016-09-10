@@ -1,5 +1,6 @@
 package com.tianyl.filmManage.service.crawler;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,8 @@ import org.jsoup.select.Elements;
 
 import com.tianyl.filmManage.model.NewFilm;
 import com.tianyl.filmManage.util.DateUtil;
+import com.tianyl.filmManage.util.RequestResult;
+import com.tianyl.filmManage.util.WebUtil;
 
 public class BttiantangCrawler implements Crawler {
 
@@ -40,6 +43,14 @@ public class BttiantangCrawler implements Crawler {
 			}
 		}
 		return result;
+	}
+
+	public static void main(String[] args) {
+		RequestResult rs = WebUtil.getUrlResponse("http://www.bttiantang.com", null, null, true);
+		List<NewFilm> nfs = new BttiantangCrawler().parseFilm(rs.getResultStr());
+		for (NewFilm nf : nfs) {
+			System.out.println(nf.getName() + ":" + new SimpleDateFormat("yyyy-MM-dd").format(nf.getUpdateTime()) + ":" + nf.getName().length());
+		}
 	}
 
 }

@@ -64,8 +64,13 @@ public class WebUtil {
 				rr.setOk(false);
 				rr.setResultBytes(IOUtils.toByteArray(conn.getErrorStream()));
 			} else {
-				rr.setOk(true);
-				rr.setResultBytes(IOUtils.toByteArray(conn.getInputStream()));
+				byte[] bs = IOUtils.toByteArray(conn.getInputStream());
+				if (bs == null || bs.length == 0) {
+					rr.setOk(false);
+				} else {
+					rr.setOk(true);
+					rr.setResultBytes(bs);
+				}
 			}
 			conn.disconnect();
 		} catch (Exception e) {
