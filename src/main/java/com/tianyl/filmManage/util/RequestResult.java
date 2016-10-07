@@ -25,7 +25,9 @@ public class RequestResult {
 	}
 
 	public String getResultStr() {
-		resultStr = new String(resultBytes, Charset.forName("utf-8"));
+		if (resultBytes != null) {
+			resultStr = new String(resultBytes, Charset.forName("utf-8"));
+		}
 		return resultStr;
 	}
 
