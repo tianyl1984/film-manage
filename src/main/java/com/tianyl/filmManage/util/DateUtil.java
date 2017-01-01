@@ -16,6 +16,13 @@ public class DateUtil {
 			} catch (ParseException e) {
 				// e.printStackTrace();
 			}
+			if (result == null) {
+				try {
+					result = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+				} catch (ParseException e) {
+					// e.printStackTrace();
+				}
+			}
 		}
 		if (dateStr.length() == 19) {
 			try {
@@ -26,7 +33,8 @@ public class DateUtil {
 		}
 		if (dateStr.length() == 11) {
 			try {
-				result = new SimpleDateFormat("yyyy/MM/dd HH:mm").parse(Calendar.getInstance().get(Calendar.YEAR) + "/" + dateStr);
+				result = new SimpleDateFormat("yyyy/MM/dd HH:mm")
+						.parse(Calendar.getInstance().get(Calendar.YEAR) + "/" + dateStr);
 			} catch (ParseException e) {
 				// e.printStackTrace();
 			}
