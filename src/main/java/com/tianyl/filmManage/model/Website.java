@@ -6,6 +6,8 @@ public class Website {
 
 	private String name;
 
+	private boolean used;
+
 	public Website() {
 
 	}
@@ -24,6 +26,14 @@ public class Website {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isUsed() {
+		return used;
+	}
+
+	public void setUsed(boolean used) {
+		this.used = used;
 	}
 
 }

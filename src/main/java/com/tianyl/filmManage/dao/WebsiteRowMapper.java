@@ -13,6 +13,7 @@ public class WebsiteRowMapper implements RowMapper<Website> {
 		Website ws = new Website();
 		ws.setId(rs.getInt("id"));
 		ws.setName(rs.getString("name"));
+		ws.setUsed(rs.getBoolean("used"));
 		return ws;
 	}
 
