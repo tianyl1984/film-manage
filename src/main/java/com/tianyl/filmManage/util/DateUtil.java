@@ -10,6 +10,32 @@ public class DateUtil {
 	public static Date parseDate(String dateStr) {
 		dateStr = dateStr != null ? dateStr.trim() : "";
 		Date result = null;
+		// 2017-1-14 17-01-04 2017-1-4
+		if (dateStr.length() == 8 || dateStr.length() == 9) {
+			String sep = "";
+			if (dateStr.contains("-")) {
+				sep = "-";
+			}
+			if (dateStr.contains("/")) {
+				sep = "/";
+			}
+			String[] strs = dateStr.split(sep);
+			if (strs.length == 3) {
+				String yearStr = dateStr.split(sep)[0].trim();
+				String monthStr = dateStr.split(sep)[1].trim();
+				String dayStr = dateStr.split(sep)[2].trim();
+				if (yearStr.length() == 2) {
+					yearStr = "20" + yearStr;
+				}
+				if (monthStr.length() == 1) {
+					monthStr = "0" + monthStr;
+				}
+				if (dayStr.length() == 1) {
+					dayStr = "0" + dayStr;
+				}
+				dateStr = yearStr + sep + monthStr + sep + dayStr;
+			}
+		}
 		if (dateStr.length() == 10) {
 			try {
 				result = new SimpleDateFormat("yyyy/MM/dd").parse(dateStr);
@@ -46,13 +72,6 @@ public class DateUtil {
 	}
 
 	public static void main(String[] args) {
-		Calendar cal = Calendar.getInstance();
-		int year = cal.get(Calendar.YEAR);
-		System.out.println(year);
-		String dateStr = "2016/02/09";
-		// dateStr = "02/11 12:44";
-		// dateStr = "2016/02/11 12:44:05";
-		Date d = parseDate(dateStr);
-		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d));
+		System.out.println(parseDate("2017-1-14"));
 	}
 }
