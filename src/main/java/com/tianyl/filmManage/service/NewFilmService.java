@@ -30,4 +30,11 @@ public class NewFilmService {
 		return jsonObj.toJSONString();
 	}
 
+	public static NewFilm findById(Integer id) {
+		return NewFilmDAO.findById(id);
+	}
+
+	public static void updateToDel(Integer id) {
+		NewFilmDAO.updateToDel(id);
+	}
 }

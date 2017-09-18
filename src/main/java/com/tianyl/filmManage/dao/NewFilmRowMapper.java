@@ -16,6 +16,7 @@ public class NewFilmRowMapper implements RowMapper<NewFilm> {
 		nf.setUpdateTime(rs.getDate("updateTime"));
 		nf.setUrl(rs.getString("url"));
 		nf.setWebSiteId(rs.getInt("id_website"));
+		nf.setDelFlag(rs.getBoolean("delFlag"));
 		return nf;
 	}
 

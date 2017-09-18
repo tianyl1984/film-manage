@@ -14,8 +14,18 @@ public class NewFilm {
 
 	private Date updateTime;
 
+	private boolean delFlag;
+
 	public NewFilm() {
 
+	}
+
+	public boolean isDelFlag() {
+		return delFlag;
+	}
+
+	public void setDelFlag(boolean delFlag) {
+		this.delFlag = delFlag;
 	}
 
 	public Integer getId() {
