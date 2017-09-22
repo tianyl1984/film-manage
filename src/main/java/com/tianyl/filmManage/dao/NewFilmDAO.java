@@ -40,4 +40,9 @@ public class NewFilmDAO {
 		JdbcUtil.update(sql, true, id);
 	}
 
+	public static List<NewFilm> findNotDel() {
+		String sql = "select * from new_film where delFlag = ?";
+		return JdbcUtil.query(sql, NewFilmRowMapper.getInstance(), false);
+	}
+
 }
