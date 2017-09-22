@@ -24,9 +24,9 @@ public class NewFilmServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String uri = req.getRequestURI();
+		String all = req.getParameter("all");
 		String jsonResult = "";
-		if (uri.contains("/not-del")) {
+		if (all != null && "1".equals(all)) {
 			jsonResult = NewFilmService.findNotDel();
 		} else {
 			String dateStr = req.getParameter("updateTime");
