@@ -31,8 +31,8 @@ public class FilmCrawlerManager {
 			String url = cw.getUrl();
 			RequestResult rs = WebUtil.getUrlResponse(url, null, null, true);
 			if (!rs.isOk()) {
-				LogManager.log("get html error,error code:" + rs.getResponseCode());
-				LogManager.log("get html error,error msg:\r\n" + rs.getResultStr());
+				LogManager.log("get html error,error code:" + rs.getResponseCode() + ",url:" + url);
+				LogManager.log("get html error,error msg:\r\n" + rs.getResultStr() + ",url:" + url);
 				continue;
 			}
 			List<NewFilm> newFilms = new ArrayList<NewFilm>();

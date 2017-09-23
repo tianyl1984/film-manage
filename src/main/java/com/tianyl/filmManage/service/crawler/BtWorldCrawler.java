@@ -16,7 +16,7 @@ public class BtWorldCrawler implements Crawler {
 
 	@Override
 	public String getUrl() {
-		return "http://www.btworld.cc/new";
+		return "http://www.btsj5.com/new";
 	}
 
 	@Override
