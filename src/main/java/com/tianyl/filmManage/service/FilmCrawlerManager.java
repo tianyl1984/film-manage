@@ -29,7 +29,7 @@ public class FilmCrawlerManager {
 		urlSet.addAll(urls);
 		for (Crawler cw : crawlers) {
 			String url = cw.getUrl();
-			RequestResult rs = WebUtil.getUrlResponse(url, null, null, true);
+			RequestResult rs = WebUtil.getUrlResponse(url, null, null, true,5);
 			if (!rs.isOk()) {
 				LogManager.log("get html error,error code:" + rs.getResponseCode() + ",url:" + url);
 				LogManager.log("get html error,error msg:\r\n" + rs.getResultStr() + ",url:" + url);

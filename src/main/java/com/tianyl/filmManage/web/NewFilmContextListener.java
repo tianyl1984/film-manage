@@ -28,7 +28,7 @@ public class NewFilmContextListener implements ServletContextListener {
 				}
 				LogManager.log("end crawl");
 			}
-		}, 10 * 1000, 1000 * 60 * 60 * 3);
+		}, 10 * 1000, 1000 * 60 * 60 * 2);
 	}
 
 	@Override

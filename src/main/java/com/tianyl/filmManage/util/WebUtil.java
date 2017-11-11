@@ -15,6 +15,19 @@ import java.util.Set;
  */
 public class WebUtil {
 
+	public static RequestResult getUrlResponse(String url,
+											   Map<String, String> paramMap, Map<String, String> cookieMap,
+											   boolean isGet,int tryTime) {
+		RequestResult result = null;
+		for (int i=0;i<tryTime;i++){
+			result = getUrlResponse(url,paramMap,cookieMap,isGet);
+			if (result.isOk()){
+				return result;
+			}
+		}
+		return result;
+	}
+
 	/**
 	 * 获取url响应内容
 	 * 
@@ -41,8 +54,8 @@ public class WebUtil {
 			conn.setDoOutput(true);
 			conn.setRequestMethod(isGet ? "GET" : "POST");
 			conn.setUseCaches(false);
-			conn.setConnectTimeout(30000);
-			conn.setReadTimeout(30000);
+			conn.setConnectTimeout(60000);
+			conn.setReadTimeout(60000);
 			// 仅对当前请求自动重定向
 			conn.setInstanceFollowRedirects(true);
 			// header 设置编码
